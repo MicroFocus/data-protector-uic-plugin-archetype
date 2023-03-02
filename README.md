@@ -1,0 +1,1 @@
+# data-protector-uic-plugin-archetype
