@@ -1,0 +1,20 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Backup appOptions",
+	"description": "appOptions in backup specification and backup request",
+	"type": "object",
+	"properties": {
+		"appName": {
+			"description": "Name of the data to protect",
+			"type": "string"
+		},
+		"appId": {
+			"description": "ID of the data to protect",
+			"type": "string"
+		}
+	},
+	"required": [
+		"appName",
+		"appId"
+	]
+}

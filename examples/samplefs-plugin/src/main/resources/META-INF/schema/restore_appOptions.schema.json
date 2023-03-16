@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Restore appOptions",
+	"description": "appOptions in restore request",
+	"type": "object",
+	"properties": {
+		"sessionId": {
+			"description": "Restore session ID",
+			"type": "string"
+		},
+		"appName": {
+			"description": "Name of the data to protect",
+			"type": "string"
+		},
+		"appId": {
+			"description": "ID of the data to protect",
+			"type": "string"
+		},
+		"restoreDirPath": {
+			"description": "Path of the directory to restore to",
+			"type": "string"
+		}
+	},
+	"required": [
+		"sessionId",
+		"appName",
+		"appId",
+		"restoreDirPath"
+	]
+}

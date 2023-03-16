@@ -1,0 +1,2 @@
+# This is a DP Agent plugin for SampleFS support.
+com.mf.dp.sample.fs.SampleFSBackupProvider
