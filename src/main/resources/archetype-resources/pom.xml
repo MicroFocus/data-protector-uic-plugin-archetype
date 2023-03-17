@@ -18,7 +18,7 @@
 		<java.version>17</java.version>
 		<integration-controller.version>23.3</integration-controller.version>
 		<integration-controller.spi.version>1.0.0</integration-controller.spi.version>
-		<springdoc-openapi.version>1.6.14</springdoc-openapi.version>
+		<springdoc-openapi.version>2.0.4</springdoc-openapi.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<json.version>20230227</json.version>
 		<json-schema-validator.version>1.0.76</json-schema-validator.version>
@@ -73,16 +73,16 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-webflux-ui</artifactId>
-			<version>${springdoc-openapi.version}</version>
+			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
 			<scope>provided</scope>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-security</artifactId>
-			<version>${springdoc-openapi.version}</version>
+			<artifactId>springdoc-openapi-starter-common</artifactId>
 			<scope>provided</scope>
-		</dependency>		
+			<version>${springdoc-openapi.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
