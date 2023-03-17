@@ -411,7 +411,7 @@ public class ${pluginName}BackupProvider extends BackupProvider implements Backu
 		try {
 			new OSCommand().removeDirectoryAndContent(logDirPath);
 			logger.info("Removed the restore log directory {} from the local system", logDirPath);
-			status.statusMessage(new SessionReport(Constant.PLUGIN_NAME, MessageType.ERH_NORMAL, NLSMessageTemplate.NLS_LOG_DIR_REMOVED));
+			status.statusMessage(new SessionReport(Constant.PLUGIN_NAME, MessageType.ERH_NORMAL, String.format(NLSMessageTemplate.NLS_LOG_DIR_REMOVED, logDirPath)));
 		} catch (Exception e) {
 			logger.error("Could not remove the restore log directory " + logDirPath, e);
 			status.statusMessage(new SessionReport(Constant.PLUGIN_NAME, MessageType.ERH_MAJOR, String.format(NLSMessageTemplate.NLS_FAILED_TO_REMOVE_LOG_DIR, logDirPath, ExceptionUtil.getMessageForSessionReport(e))));
