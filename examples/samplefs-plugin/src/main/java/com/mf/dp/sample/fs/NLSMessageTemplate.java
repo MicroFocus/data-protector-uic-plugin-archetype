@@ -21,8 +21,9 @@ public class NLSMessageTemplate {
 		throw new IllegalStateException("Constant class");
 	}
 
-	public static final String NLS_START_FULL_BACKUP					= "Starting full backup.";
-	public static final String NLS_START_INCREMENTAL_BACKUP 			= "Starting incremental backup.";
+	// A couple strings localized to Simplified Chinese for demonstration purpose
+	public static final String NLS_START_FULL_BACKUP					= "开始完整备份."; // "Starting full backup."
+	public static final String NLS_START_INCREMENTAL_BACKUP 			= "开始增量备份."; // "Starting incremental backup."
 	public static final String NLS_GET_LAST_BACKUP_DETAILS 				= "Retrieving last backup details.";
 	public static final String NLS_FAILED_TO_OBTAIN_LAST_BACKUP_DETAIL 	= "Could not obtain last backup details:\n\t\t%s";
 	public static final String NLS_INCREMENTAL_REQUIRES_PREVIOUS_BACKUP = "Incremental backup requires previous backup.";
