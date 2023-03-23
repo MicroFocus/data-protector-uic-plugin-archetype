@@ -20,7 +20,7 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 Refer to the README.md in the root of the generated project for instructions on how to use the skeleton project to develop, build, deploy, and run a plugin.
 
 ## Example plugin
-This project also contains an example plugin named **SampleFS** (in *examples/samplefs-plugin* directory). The *SampleFS* plugin is developed using the skeleton project created from the archetype and adds rudimentary backup and restore functionality for a directory on the file system. See *examples/samplefs-plugin/README.md* for more details.
+This project also contains an example plugin named [SampleFS](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin). The *SampleFS* plugin is developed using the skeleton project created from the archetype and adds rudimentary backup and restore functionality for a directory on the file system. See *examples/samplefs-plugin/README.md* for more details.
 
 ## What's new
 - 1.0.0
