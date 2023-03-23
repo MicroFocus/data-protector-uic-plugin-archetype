@@ -29,4 +29,3 @@ This project also contains an example plugin named **SampleFS** (in *examples/sa
 ## License
 [MIT license](LICENSE).
 
-## Disclaimer
