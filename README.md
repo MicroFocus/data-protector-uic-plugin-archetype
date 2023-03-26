@@ -24,7 +24,7 @@ This project also contains an example plugin named [SampleFS](https://github.com
 
 ## What's new
 - 1.0.0
-    - Initial release
+    - Initial release - This release is compatible with Data Protector 23.3
     
 ## License
 [MIT license](LICENSE).
