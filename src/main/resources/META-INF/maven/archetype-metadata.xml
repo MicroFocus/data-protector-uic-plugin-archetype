@@ -45,6 +45,7 @@
 		<fileSet filtered="true" packaged="false">
 			<directory></directory>
 			<includes>
+				<include>parent-pom.xml</include>
 				<include>pom.xml</include>
 				<include>README.md</include>
 			</includes>
