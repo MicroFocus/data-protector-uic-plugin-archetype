@@ -13,14 +13,15 @@
 
 <h2>Preparation</h2>
 
-- JDK 17 and recent version of Maven are required
-- Obtain UIC jar (integration-controller-23.3.jar) and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project.
+- JDK 17 and recent version of Maven are required.
+- Install and configure Data Protector 23.3 with at least one UIC instance.
+- Copy the UIC jar (integration-controller-23.3.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
 
 1. Start by searching all Java source files (*.java) for the occurrences of `TODO` in order to get an understanding of where to focus efforts. Also, see [SampleFS Plugin](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin) project for an example of developing a simple and functioning plugin based on the skeleton project generated from the archetype.
 
-> Note: The skeleton project is provided to help facilitate and speed up the development. While it is strongly recommended to use it, it is not required.
+> Note: The skeleton project is provided to help facilitate and speed up the development. Although not strictly required, it is **strongly** recommended to use it.
 
 2. Look for `TODO` in pom.xml for the placeholder where you should specify 3rd party dependencies that are not already provided by UIC. To find out which dependencies are included in UIC, use Maven (e.g., `mvn dependency:tree`) or your IDE feature for browsing dependency hierarchy.
 

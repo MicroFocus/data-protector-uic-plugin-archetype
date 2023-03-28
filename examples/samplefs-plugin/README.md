@@ -14,7 +14,8 @@
 ## Preparation
 
 - JDK 17 and recent version of Maven are required
-- Obtain UIC jar (integration-controller-23.3.jar) and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project.
+- Install and configure Data Protector 23.3 with at least one UIC instance.
+- Copy the UIC jar (integration-controller-23.3.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 ## Build
 
