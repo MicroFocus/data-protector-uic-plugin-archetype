@@ -33,7 +33,7 @@ public class RestoreAppOptions {
 	@Schema(requiredMode = RequiredMode.REQUIRED, example = "")	
 	private String appId;
 
-    //TODO Specify additional fields you may have
+    //TODO Specify additional fields needed by the plugin
 
 	public String getSessionId() {
 		return sessionId;

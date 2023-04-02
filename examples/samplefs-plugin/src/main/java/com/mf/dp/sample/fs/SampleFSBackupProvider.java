@@ -36,8 +36,8 @@ import org.springframework.validation.Validator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mf.dp.sample.fs.model.BackupContext;
-import com.mf.dp.sample.fs.model.ObjectOptions;
-import com.mf.dp.sample.fs.model.ObjectVerOptions;
+import com.mf.dp.sample.fs.model.SampleFSObjectOptions;
+import com.mf.dp.sample.fs.model.SampleFSObjectVerOptions;
 import com.mf.dp.sample.fs.model.RestoreContext;
 import com.mf.dp.sample.fs.model.SampleFSBackupRequest;
 import com.mf.dp.sample.fs.model.SampleFSLastBackupDetail;
@@ -207,12 +207,12 @@ public class SampleFSBackupProvider extends BackupProvider implements BackupInte
 		String logDirPath = createBackupTempDirectory(String.valueOf(now));
 		context.setLogDirPath(logDirPath);
 		
-		ObjectOptions objectOptions = new ObjectOptions();
+		SampleFSObjectOptions objectOptions = new SampleFSObjectOptions();
 		context.setObjectOptions(objectOptions);
 		objectOptions.setAppName(request.getAppOptions().getAppName());
 		objectOptions.setAppId(request.getAppOptions().getAppId());
 		
-		ObjectVerOptions objectVerOptions = new ObjectVerOptions();
+		SampleFSObjectVerOptions objectVerOptions = new SampleFSObjectVerOptions();
 		context.setObjectVerOptions(objectVerOptions);
 		objectVerOptions.setSourceClient(request.getAppHost());
 		objectVerOptions.setBackupType(request.getBackupType());

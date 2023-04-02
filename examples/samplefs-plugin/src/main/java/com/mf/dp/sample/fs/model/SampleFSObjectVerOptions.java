@@ -17,25 +17,29 @@ package com.mf.dp.sample.fs.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.mf.dp.uic.model.ObjectVerOptions;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ObjectOptions {
+public class SampleFSObjectVerOptions extends ObjectVerOptions {
 
-	private String appName;
-	private String appId;
+    private String backupType;
+	private long backupTime;
 	
-	public String getAppName() {
-		return appName;
+	public String getBackupType() {
+		return backupType;
 	}
-	public void setAppName(String appName) {
-		this.appName = appName;
+	
+	public void setBackupType(String backupType) {
+		this.backupType = backupType;
 	}
-	public String getAppId() {
-		return appId;
+	
+	public long getBackupTime() {
+		return backupTime;
 	}
-	public void setAppId(String appId) {
-		this.appId = appId;
+	
+	public void setBackupTime(long backupTime) {
+		this.backupTime = backupTime;
 	}
 	
 }

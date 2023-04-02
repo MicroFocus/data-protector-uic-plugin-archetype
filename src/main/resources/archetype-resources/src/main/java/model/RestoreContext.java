@@ -4,7 +4,7 @@ public class RestoreContext {
 
 	private String dataDirPath;
 	private String logDirPath;
-    //TODO Specify additional fields you may need
+    //TODO Specify additional fields needed by the plugin
 	
 	public String getDataDirPath() {
 		return dataDirPath;

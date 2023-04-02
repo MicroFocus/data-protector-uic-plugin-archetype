@@ -17,37 +17,9 @@ package com.mf.dp.sample.fs.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.mf.dp.uic.model.ObjectOptions;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ObjectVerOptions {
-
-	/**
-     * The client where backup executed.
-     * It is going to be used for license
-     * calculation.
-	 */
-    private String sourceClient;
-    private String backupType;
-	private long backupTime;
-	
-	public String getSourceClient() {
-		return sourceClient;
-	}
-	public void setSourceClient(String sourceClient) {
-		this.sourceClient = sourceClient;
-	}
-	public String getBackupType() {
-		return backupType;
-	}
-	public void setBackupType(String backupType) {
-		this.backupType = backupType;
-	}
-	public long getBackupTime() {
-		return backupTime;
-	}
-	public void setBackupTime(long backupTime) {
-		this.backupTime = backupTime;
-	}
-	
+public class SampleFSObjectOptions extends ObjectOptions {	
 }

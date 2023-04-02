@@ -23,19 +23,19 @@ import com.mf.dp.uic.util.JsonUtil;
 
 public class SampleFSLastBackupDetail {
 
-	private ObjectVerOptions objectVerOptions;
+	private SampleFSObjectVerOptions objectVerOptions;
 	private String backupType;
 	
 	public SampleFSLastBackupDetail (LastBackupDetail detail) throws JsonProcessingException {
 		if(!StringUtils.isBlank(detail.getObjectVerOptionsAsJsonStr()))	
-			this.objectVerOptions = JsonUtil.deserializeFromJson(detail.getObjectVerOptionsAsJsonStr(), ObjectVerOptions.class);
+			this.objectVerOptions = JsonUtil.deserializeFromJson(detail.getObjectVerOptionsAsJsonStr(), SampleFSObjectVerOptions.class);
 		this.backupType = detail.getBackupType();
 	}
 	
-	public ObjectVerOptions getObjectVerOptions() {
+	public SampleFSObjectVerOptions getObjectVerOptions() {
 		return objectVerOptions;
 	}
-	public void setObjectVerOptions(ObjectVerOptions objectVerOptions) {
+	public void setObjectVerOptions(SampleFSObjectVerOptions objectVerOptions) {
 		this.objectVerOptions = objectVerOptions;
 	}
 	public String getBackupType() {

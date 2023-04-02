@@ -20,8 +20,8 @@ public class BackupContext {
 	private long backupTime;
 	private String dataDirPath;
 	private String logDirPath;
-	private ObjectOptions objectOptions;
-	private ObjectVerOptions objectVerOptions;
+	private SampleFSObjectOptions objectOptions;
+	private SampleFSObjectVerOptions objectVerOptions;
 	
 	public long getBackupTime() {
 		return backupTime;
@@ -41,16 +41,16 @@ public class BackupContext {
 	public void setLogDirPath(String logDirPath) {
 		this.logDirPath = logDirPath;
 	}
-	public ObjectOptions getObjectOptions() {
+	public SampleFSObjectOptions getObjectOptions() {
 		return objectOptions;
 	}
-	public void setObjectOptions(ObjectOptions objectOptions) {
+	public void setObjectOptions(SampleFSObjectOptions objectOptions) {
 		this.objectOptions = objectOptions;
 	}
-	public ObjectVerOptions getObjectVerOptions() {
+	public SampleFSObjectVerOptions getObjectVerOptions() {
 		return objectVerOptions;
 	}
-	public void setObjectVerOptions(ObjectVerOptions objectVerOptions) {
+	public void setObjectVerOptions(SampleFSObjectVerOptions objectVerOptions) {
 		this.objectVerOptions = objectVerOptions;
 	}
 		

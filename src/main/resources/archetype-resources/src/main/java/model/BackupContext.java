@@ -4,9 +4,9 @@ public class BackupContext {
 
 	private String dataDirPath;
 	private String logDirPath;
-	private ObjectOptions objectOptions;
-	private ObjectVerOptions objectVerOptions;
-    //TODO Specify additional fields you may need
+	private ${pluginName}ObjectOptions objectOptions;
+	private ${pluginName}ObjectVerOptions objectVerOptions;
+    //TODO Specify additional fields needed by the plugin
 
 	public String getDataDirPath() {
 		return dataDirPath;
@@ -20,16 +20,16 @@ public class BackupContext {
 	public void setLogDirPath(String logDirPath) {
 		this.logDirPath = logDirPath;
 	}
-	public ObjectOptions getObjectOptions() {
+	public ${pluginName}ObjectOptions getObjectOptions() {
 		return objectOptions;
 	}
-	public void setObjectOptions(ObjectOptions objectOptions) {
+	public void setObjectOptions(${pluginName}ObjectOptions objectOptions) {
 		this.objectOptions = objectOptions;
 	}
-	public ObjectVerOptions getObjectVerOptions() {
+	public ${pluginName}ObjectVerOptions getObjectVerOptions() {
 		return objectVerOptions;
 	}
-	public void setObjectVerOptions(ObjectVerOptions objectVerOptions) {
+	public void setObjectVerOptions(${pluginName}ObjectVerOptions objectVerOptions) {
 		this.objectVerOptions = objectVerOptions;
 	}
 		

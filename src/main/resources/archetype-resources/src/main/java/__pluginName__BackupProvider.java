@@ -30,8 +30,8 @@ import com.mf.dp.uic.util.DPUtil;
 import com.mf.dp.uic.util.ExceptionUtil;
 
 import ${package}.model.BackupContext;
-import ${package}.model.ObjectOptions;
-import ${package}.model.ObjectVerOptions;
+import ${package}.model.${pluginName}ObjectOptions;
+import ${package}.model.${pluginName}ObjectVerOptions;
 import ${package}.model.RestoreContext;
 import ${package}.model.${pluginName}BackupRequest;
 import ${package}.model.${pluginName}LastBackupDetail;
@@ -157,13 +157,13 @@ public class ${pluginName}BackupProvider extends BackupProvider implements Backu
 		String logDirPath = createBackupTempDirectory(String.valueOf(now));
 		context.setLogDirPath(logDirPath);
 		
-		ObjectOptions objectOptions = new ObjectOptions();
+		${pluginName}ObjectOptions objectOptions = new ${pluginName}ObjectOptions();
 		context.setObjectOptions(objectOptions);
 		objectOptions.setAppName(request.getAppOptions().getAppName());
 		objectOptions.setAppId(request.getAppOptions().getAppId());
 		//TODO Add additional information you may need
 		
-		ObjectVerOptions objectVerOptions = new ObjectVerOptions();
+		${pluginName}ObjectVerOptions objectVerOptions = new ${pluginName}ObjectVerOptions();
 		context.setObjectVerOptions(objectVerOptions);
 		objectVerOptions.setSourceClient(request.getAppHost());
 		//TODO Add additional information you may need
