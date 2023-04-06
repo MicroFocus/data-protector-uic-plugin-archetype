@@ -6,8 +6,11 @@ public class NLSMessageTemplate {
 		throw new IllegalStateException("Constant class");
 	}
 
-	//TODO If serving a single locale, localizing the strings directly in this class could be the simplest way.
-	// To support multiple locales, more standardized approach with externalized messages would be desirable.
+	//TODO If the plugin serves only a single locale, localizing the strings directly in
+	// this class could be the easiest way. To support multiple locales, more standardized
+	// approach with externalized messages (i.e., resource bundle) would be appropriate
+	// (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ResourceBundle.html).
+
 	public static final String NLS_START_FULL_BACKUP					= "Starting full backup.";
 	public static final String NLS_START_INCREMENTAL_BACKUP 			= "Starting incremental backup.";
 	public static final String NLS_GET_LAST_BACKUP_DETAILS 				= "Retrieving last backup details.";

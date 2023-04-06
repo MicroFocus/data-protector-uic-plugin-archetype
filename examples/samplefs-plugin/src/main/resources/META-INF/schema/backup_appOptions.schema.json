@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"title": "Backup appOptions",
-	"description": "appOptions in backup specification and backup request",
+	"description": "appOptions in backup specification and backup request; For JSON Schema, see https://json-schema.org/specification.html",
 	"type": "object",
 	"properties": {
 		"appName": {

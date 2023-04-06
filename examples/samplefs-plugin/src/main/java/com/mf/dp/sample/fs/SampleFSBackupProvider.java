@@ -58,8 +58,41 @@ public class SampleFSBackupProvider extends BaseBackupProvider {
 	private FSService fsService;
 
 	@Override
+	protected void doFullBackup(IProgressStatus status, SampleFSBackupRequest request, BackupContext context) {
+		// For SampleFS, there is no separate step for creating full backup data and
+		// staging it in a known location. Instead, the context.dataDirPath field was
+		// set to the location of the source directory earlier in the getBackupContext()
+		// method. Consequently, the data will be transfered directly from the source
+		// directly to the Media Agent after this method returns.
+		// No processing required here.
+	}
+	
+	@Override
+	protected void doIncrBackup(IProgressStatus status, SampleFSBackupRequest request, BackupContext context, SampleFSLastBackupDetail lastBackupDetail) {
+		// Copy all files modified since the last backup time to the prepared log directory
+		fsService.copyFilesModifiedSince(request.getAppOptions().getDirPath(), context.getLogDirPath(),
+				lastBackupDetail.getObjectVerOptions().getBackupTime(),
+				ConfigProperties.getPropertyBoolean("samplefs.backup.follow-symbolic-links"));
+	}
+
+	@Override
+	protected void doRestoreFullBackup(IProgressStatus status, SampleFSRestoreRequest request, RestoreContext context) {
+		sendEmailNotification(request);
+
+		// No additional processing is needed for the full backup, because
+		// the backed-up data was copied directly into the target directory
+		// (i.e., no intermediate staging area).
+	}
+	
+	@Override
+	protected void doRestoreIncrBackup(IProgressStatus status, SampleFSRestoreRequest request, RestoreContext context, File incrBackupDir) {
+		fsService.copyContent(incrBackupDir.getAbsolutePath(), request.getAppOptions().getRestoreDirPath());
+	}
+
+	@Override
 	protected void checkIncrBackupConstraint(IProgressStatus status, SampleFSLastBackupDetail lastBackupDetail) {
 		super.checkIncrBackupConstraint(status, lastBackupDetail);
+		
 		if(lastBackupDetail.getObjectVerOptions().getBackupTime() <= 0) {
 			logger.error("Encountered invalid backup time of {}", lastBackupDetail.getObjectVerOptions().getBackupTime());
 			status.statusMessage(new SessionReport(Constant.PLUGIN_NAME, MessageType.ERH_MAJOR, String.format(NLSMessageTemplate.NLS_UNEXPECTED_ERROR, "Encountered invalid backup time")));
@@ -91,6 +124,7 @@ public class SampleFSBackupProvider extends BaseBackupProvider {
 		context.setObjectOptions(objectOptions);
 		objectOptions.setAppName(request.getAppOptions().getAppName());
 		objectOptions.setAppId(request.getAppOptions().getAppId());
+		objectOptions.setDirPaths(new String[] {request.getAppOptions().getDirPath()});
 		
 		// Set up object version options
 		SampleFSObjectVerOptions objectVerOptions = new SampleFSObjectVerOptions();
@@ -158,38 +192,6 @@ public class SampleFSBackupProvider extends BaseBackupProvider {
 		return context;
 	}
 	
-	@Override
-	protected void doFullBackup(IProgressStatus status, SampleFSBackupRequest request, BackupContext context) {
-		// For SampleFS, there is no separate step for creating full backup data and
-		// staging it in a known location. Instead, the context.dataDirPath field was
-		// set to the location of the source directory earlier in the getBackupContext()
-		// method. Consequently, the data will be transfered directly from the source
-		// directly to the Media Agent after this method returns.
-		// No processing required here.
-	}
-	
-	@Override
-	protected void doIncrBackup(IProgressStatus status, SampleFSBackupRequest request, BackupContext context, SampleFSLastBackupDetail lastBackupDetail) {
-		// Copy all files modified since the last backup time to the prepared log directory
-		fsService.copyFilesModifiedSince(request.getAppOptions().getDirPath(), context.getLogDirPath(),
-				lastBackupDetail.getObjectVerOptions().getBackupTime(),
-				ConfigProperties.getPropertyBoolean("samplefs.backup.follow-symbolic-links"));
-	}
-
-	@Override
-	protected void doRestoreFullBackup(IProgressStatus status, SampleFSRestoreRequest request, RestoreContext context) {
-		sendEmailNotification(request);
-
-		// No additional processing is needed for the full backup, because
-		// the backed-up data was copied directly into the target directory
-		// (i.e., no intermediate staging area).
-	}
-	
-	@Override
-	protected void doRestoreIncrBackup(IProgressStatus status, SampleFSRestoreRequest request, RestoreContext context, File incrBackupDir) {
-		fsService.copyContent(incrBackupDir.getAbsolutePath(), request.getAppOptions().getRestoreDirPath());
-	}
-
 	private void sendEmailNotification(SampleFSRestoreRequest request) {
 		// NOTE: DP neither requires nor recommends sending an email notification
 		//       out to administrator whenever a backup or restore starts.

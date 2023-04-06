@@ -118,7 +118,7 @@ public abstract class BaseBackupProvider extends BackupProvider implements Backu
 			status.statusMessage(new SessionReport(Constant.PLUGIN_NAME, MessageType.ERH_MAJOR, NLSMessageTemplate.NLS_INCREMENTAL_REQUIRES_PREVIOUS_BACKUP));
 			throw new ServiceException(HttpStatus.CONFLICT, "Incremental backup requires previous backup in the chain");
 		}
-		//TODO If you have additional validation to perform, add them here
+		//TODO If you have additional validation to perform, add them directly here or override this method in SampleFSBackupProvider whichever is preferred.
 	}
 
 	protected BackupContext establishBackupContext(IProgressStatus status, SampleFSBackupRequest request) {
@@ -186,8 +186,9 @@ public abstract class BaseBackupProvider extends BackupProvider implements Backu
 		// doFullBackup() method overriden by the plugin.
 		
 		/// [Step 4] Prepare plugin-specific fields in the context
-		
 		//TODO If the plugin defines additional fields in the context object, set them up here.
+		
+		/// NOTE: You can add custom behaviors directly in this method or override this method in SampleFSBackupProvider whichever is preferred.
 		
 		return context;
 	}
@@ -277,7 +278,8 @@ public abstract class BaseBackupProvider extends BackupProvider implements Backu
 			// Basic validation of the input fields
 			request.validate(validator);
 			//TODO If the plugin needs to perform additional (typically, non-syntactic) validation
-			// on the request data, add them here.
+			// on the request data, add them here. Alternatively, you could override this method
+			// in SampleFSBackupProvider whichever is preferred.
 			return request;
 		} catch (Exception e) {
 			logger.error("Input validation failed", e);
@@ -383,7 +385,8 @@ public abstract class BaseBackupProvider extends BackupProvider implements Backu
 			// Basic validation of the input fields
 			request.validate(validator);
 			//TODO If the plugin needs to perform additional (typically, non-syntactic) validation
-			// on the request data, add them here.
+			// on the request data, add them here. Alternatively, you could override this method
+			// in SampleFSBackupProvider whichever is preferred.
 			return request;
 		} catch (Exception e) {
 			logger.error("Input validation failed", e);
@@ -443,9 +446,10 @@ public abstract class BaseBackupProvider extends BackupProvider implements Backu
 		context.setDeleteLogDirAfterUse(true);
 
 		/// [Step 2] Prepare plugin-specific fields in the context
-		
 		//TODO If the plugin defines additional fields in the context object, set them up here.
 
+		/// NOTE: You can add custom behaviors directly in this method or override this method in SampleFSBackupProvider whichever is preferred.
+		
 		return context;
 	}
 

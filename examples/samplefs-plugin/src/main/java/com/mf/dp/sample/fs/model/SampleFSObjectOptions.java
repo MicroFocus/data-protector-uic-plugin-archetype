@@ -21,5 +21,16 @@ import com.mf.dp.uic.model.ObjectOptions;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SampleFSObjectOptions extends ObjectOptions {	
+public class SampleFSObjectOptions extends ObjectOptions {
+	
+	private String[] dirPaths;
+
+	public String[] getDirPaths() {
+		return dirPaths;
+	}
+
+	public void setDirPaths(String[] dirPaths) {
+		this.dirPaths = dirPaths;
+	}
+	
 }

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"title": "Restore appOptions",
-	"description": "appOptions in restore request",
+	"description": "appOptions in restore request; For JSON Schema, see https://json-schema.org/specification.html",
 	"type": "object",
 	"properties": {
 		"sessionId": {
