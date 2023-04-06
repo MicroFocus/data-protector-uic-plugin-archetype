@@ -14,6 +14,8 @@ public class NLSMessageTemplate {
 	public static final String NLS_FAILED_TO_OBTAIN_LAST_BACKUP_DETAIL 	= "Could not obtain last backup details:\n\t\t%s";
 	public static final String NLS_INCREMENTAL_REQUIRES_PREVIOUS_BACKUP = "Incremental backup requires previous backup.";
 	public static final String NLS_FAILED_TO_PREPARE_FOR_BACKUP 		= "Could not prepare for backup:\n\t\t%s";
+	public static final String NLS_DATA_DIR_REMOVED 					= "The data directory %s is removed.";
+	public static final String NLS_FAILED_TO_REMOVE_DATA_DIR 			= "Could not remove the data directory %s:\n\t\t%s";
 	public static final String NLS_LOG_DIR_REMOVED 						= "The log directory %s is removed.";
 	public static final String NLS_FAILED_TO_REMOVE_LOG_DIR 			= "Could not remove the log directory %s:\n\t\t%s";
 	public static final String NLS_TRANSFER_TO_MA 						= "Transferring backup data to Media Agent. This may take a while.";

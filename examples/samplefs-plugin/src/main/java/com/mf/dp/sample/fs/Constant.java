@@ -23,4 +23,7 @@ public class Constant {
 
 	public static final String PLUGIN_NAME = "SampleFS";
 
+	public static final String BACKUP_TYPE_FULL = "full";
+	
+	public static final String BACKUP_TYPE_INCR = "incr";
 }

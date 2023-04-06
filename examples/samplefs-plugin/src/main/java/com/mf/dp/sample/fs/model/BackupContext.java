@@ -17,17 +17,19 @@ package com.mf.dp.sample.fs.model;
 
 public class BackupContext {
 
-	private long backupTime;
+	private long time;
 	private String dataDirPath;
+	private boolean deleteDataDirAfterUse = false;
 	private String logDirPath;
+	private boolean deleteLogDirAfterUse = false;
 	private SampleFSObjectOptions objectOptions;
 	private SampleFSObjectVerOptions objectVerOptions;
 	
-	public long getBackupTime() {
-		return backupTime;
+	public BackupContext() {
+		this.time = System.currentTimeMillis();
 	}
-	public void setBackupTime(long backupTime) {
-		this.backupTime = backupTime;
+	public long getTime() {
+		return time;
 	}
 	public String getDataDirPath() {
 		return dataDirPath;
@@ -35,11 +37,23 @@ public class BackupContext {
 	public void setDataDirPath(String dataDirPath) {
 		this.dataDirPath = dataDirPath;
 	}
+	public boolean isDeleteDataDirAfterUse() {
+		return deleteDataDirAfterUse;
+	}
+	public void setDeleteDataDirAfterUse(boolean deleteDataDirAfterUse) {
+		this.deleteDataDirAfterUse = deleteDataDirAfterUse;
+	}
 	public String getLogDirPath() {
 		return logDirPath;
 	}
 	public void setLogDirPath(String logDirPath) {
 		this.logDirPath = logDirPath;
+	}
+	public boolean isDeleteLogDirAfterUse() {
+		return deleteLogDirAfterUse;
+	}
+	public void setDeleteLogDirAfterUse(boolean deleteLogDirAfterUse) {
+		this.deleteLogDirAfterUse = deleteLogDirAfterUse;
 	}
 	public SampleFSObjectOptions getObjectOptions() {
 		return objectOptions;
