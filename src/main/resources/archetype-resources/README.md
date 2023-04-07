@@ -13,19 +13,26 @@
 
 <h2>Preparation</h2>
 
-- JDK 17 and recent version of Maven are required.
+- JDK 17 
+- Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 with at least one UIC instance.
 - Copy the UIC jar (integration-controller-23.3.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
 
-1. Start by searching all Java source files (*.java) for the occurrences of `TODO` in order to get an understanding of where to focus efforts. Also, see [SampleFS Plugin](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin) project for an example of developing a simple and functioning plugin based on the skeleton project generated from the archetype.
+1. Start by searching all Java source files (*.java) for the occurrences of `TODO` in order to get an understanding of where to focus efforts. Also, see [SampleFS Plugin](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin) project for an example of developing a simple and functioning plugin based on the skeleton project generated from the archetype. The following lists the most essential places requiring modification:
+
+    - doFullBackup method in ${pluginName}BackupProvider.java
+    - doIncrBackup method in ${pluginName}BackupProvider.java
+    - doRestoreFullBackup method in ${pluginName}BackupProvider.java
+    - doRestoreIncrBackup method in ${pluginName}BackupProvider.java
 
 > Note: The skeleton project is provided to help facilitate and speed up the development. Although not strictly required, it is **strongly** recommended to use it.
 
 2. Look for `TODO` in pom.xml for the placeholder where you should specify 3rd party dependencies that are not already provided by UIC. To find out which dependencies are included in UIC, use Maven (e.g., `mvn dependency:tree`) or your IDE feature for browsing dependency hierarchy.
 
 > Note: The UIC is not a general-purpose container capable of loading multiple plugins without ever inflicting potential class loading issues among the plugins and UIC. Specifically, it does not offer the type of custom class loaders you find in Jakarta EE or OSGi that are needed to robustly isolate one plugin/application from another and to be able to support different versions of the same dependency. Instead, the prevailing use case for UIC is that it loads and executes only a single plugin on each instance. UIC relies on the built-in JVM class loaders where a single system class loader is used to load all classes from the classpath.  For this reason, a **care** must be taken to ensure that the plugin is packaged in such a way that it would not cause conflict with UIC itself.
+<br><br>The structure of the skeleton project automatically takes care of the hard part. It divides the dependencies into two categories by breaking it into parent-pom.xml and pom.xml. The parent-pom specifies all top-level dependencies (and their transitive dependencies by definition) that are provided by the UIC runtime environment. The plugin developer is only required to specify additional dependencies in pom.xml that are not supplied at runtime by UIC. For concrete example, see [SampleFS pom.xml](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin/pom.xml).
 
 3. Edit *src/main/resources/META-INF/backup_appOptions.schema.json* to describe the additional properties implemented by the plugin. Specifically, look for *app-specific-key-for-spec* fields in the example below. All fields contained in the enclosing *appOptions* object need to be described in the schema.
 
@@ -49,7 +56,7 @@ Run `mvn clean package`
 ```
 controller.plugin.packages=${package},${package}.*
 ```
-- Start *dpuic* service. Verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following:
+- Start *dpuic* service. Verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
 
 ```
 <timestamp> [main] [INFO ] com.mf.dp.uic.plugin.PluginManager - Plugins loaded:
@@ -65,7 +72,7 @@ controller.plugin.packages=${package},${package}.*
 
 <h2>Creating backup specification</h2>
 
-Use the REST API offered by the app server to create/save backup specification. The endpoint is *https://&lt;CM_hostname&gt;:7116/dp-protection/restws/unified/v1/backupspecifications*. Currently, spec creation is not possible through the Web UI.
+Use the REST API offered by the Data Protector app server to create/save backup specification. Make sure you have appropriate permissions assigned. Read the REST API documentation on how to obtain auth tokens to invoke the APIs. The endpoint is *https://&lt;CM_hostname&gt;:7116/dp-protection/restws/unified/v1/backupspecifications*. Currently, spec creation is not possible through the Web UI. To see the schemas (data models) associated with the backup specification, access Swagger UI at *https://&lt;CM_hostname&gt;:7116/dp-apis* and look for *UnifiedBackupSpecification*.
 
 Here's an example payload.
 
@@ -135,6 +142,7 @@ A few key points to pay attention to:
 - The `client.appName` must be the same as `client.appOptions.appName`.
 - The `client.appOptions.app-specific-key-for-spec-n` are the extensible part of the JSON and their semantics are known only to the plugin.
 - The content of `client.appOptions` must be defined in *backup_appOptions.schema.json* explained earlier.
+- To get the details required for `target.devices`, go to the `Devices & Media` context with the Data Protector Manager, and consult the information available under `Environment->Devices`.
 
 <h2>Triggering backup request</h2>
 

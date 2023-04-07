@@ -13,7 +13,8 @@
 
 ## Preparation
 
-- JDK 17 and recent version of Maven are required
+- JDK 17 
+- Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 with at least one UIC instance.
 - Copy the UIC jar (integration-controller-23.3.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
@@ -49,7 +50,7 @@ controller.plugin.packages=com.mf.dp.sample.*
 
 ## Creating backup specification
 
-Use the REST API offered by the app server to create/save a backup specification. The endpoint is *https://&lt;CM_hostname&gt;:7116/dp-protection/restws/unified/v1/backupspecifications*. Currently, spec creation is not possible through the Web UI.
+Use the REST API offered by the Data Protector app server to create/save backup specification. Make sure you have appropriate permissions assigned. Read the REST API documentation on how to obtain auth tokens to invoke the APIs. The endpoint is *https://&lt;CM_hostname&gt;:7116/dp-protection/restws/unified/v1/backupspecifications*. Currently, spec creation is not possible through the Web UI. To see the schemas (data models) associated with the backup specification, access Swagger UI at *https://&lt;CM_hostname&gt;:7116/dp-apis* and look for *UnifiedBackupSpecification*.
 
 Here's an example payload.
 
@@ -117,6 +118,8 @@ A few key points to pay attention to:
 - The `client.appOptions.appName` should be a name given to the application or the data source. A name is not necessarily unique for each data source. Name should not contain space.
 - The `client.appName` must be the same as `client.appOptions.appName`.
 - The `client.appOptions.dirPath` must denote an existing directory (not a file) and this implementation accepts only a single value (hence, not really useful from the real-world feature perspective).
+- The content of `client.appOptions` is defined in *backup_appOptions.schema.json* explained earlier.
+- To get the details required for `target.devices`, go to the `Devices & Media` context with the Data Protector Manager, and consult the information available under `Environment->Devices`.
 
 ## Triggering backup request
 
