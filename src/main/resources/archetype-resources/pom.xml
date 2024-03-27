@@ -10,9 +10,9 @@
 		<relativePath>parent-pom.xml</relativePath>
 	</parent>
 	<groupId>${groupId}</groupId>
-	<artifactId>${artifactId}</artifactId>
+	<artifactId>${pluginName}</artifactId>
 	<version>${version}</version>
-	<name>${artifactId}</name>
+	<name>${pluginName}</name>
 	<description>${pluginName} plugin for Data Protector UIC</description>
 	<!-- Only list those additional dependencies that aren't already defined and provided by the parent (uic-plugin-parent) -->
 	<dependencies>	
