@@ -26,5 +26,10 @@
             <destName>${project.artifactId}.jar</destName>
             <outputDirectory>plugins</outputDirectory>
         </file>
+        <file>
+            <source>${basedir}/src/main/resources/META-INF/services/com.mf.dp.uic.plugin.spi.BackupProvider</source>
+            <destName>${project.artifactId}</destName>
+            <outputDirectory>config</outputDirectory>
+        </file>
     </files>
 </assembly>
