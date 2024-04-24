@@ -134,7 +134,7 @@ Here is an example request URL and associated payload/body to the app server RES
 	
 	{
 	    "specificationName": "samplefs-backup-spec-1",
-	    "appSubType":"SampleFS",
+	    "appSubType": "SampleFS",
 	    "mode": "full",
 	    "load": "high",
 	    "monitor": "show"

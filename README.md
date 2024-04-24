@@ -14,8 +14,10 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 
 ![Screenshot](images/generate_project.png?raw=true)
 
-&nbsp;&nbsp;&nbsp;&nbsp;**IMPORTANT**: For the property *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
-For the property *package*, the value supported should be 'com.mf.dp'
+&nbsp;&nbsp;&nbsp;&nbsp;**IMPORTANT**:
+For the property *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
+For the property *package*, the value supported should be 'com.mf.dp'.
+For the property *version*, the value should be in numbers.
 
 ## Using the generated project
 Refer to the README.md located in the root of the generated project for instructions on how to use the skeleton project to develop, build, deploy, and run a plugin.
