@@ -50,7 +50,7 @@
 							<Implementation-Title>${pluginName} Plugin</Implementation-Title>
 							<Implementation-Vendor>${groupId}</Implementation-Vendor>
 							<Implementation-Version>${version}</Implementation-Version>
-							<UIC-Plugin-Name>${pluginName}</UIC-Plugin-Name>
+							<UIC-Plugin-Name>${pluginName.toLowerCase()}</UIC-Plugin-Name>
 							<UIC-Version>${integration-controller.version}</UIC-Version>
 							<UIC-SPI-Version>${integration-controller.spi.version}</UIC-SPI-Version>
 							<Build-Time>${maven.build.timestamp}</Build-Time>

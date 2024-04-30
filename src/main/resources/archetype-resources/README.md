@@ -16,7 +16,7 @@
 - JDK 17 
 - Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 with at least one UIC instance.
-- Copy the UIC jar (integration-controller-23.3.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
+- Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
 
@@ -45,7 +45,7 @@ Run `mvn clean package`
 
 <h2>Manual Installation</h2>
 
-- Copy the built distribution (*${artifactId}-${version}-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
+- Copy the built distribution (*${pluginName.toLowerCase()}-${version}-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
 - Make sure that the *dpuic* service is stopped.
 - Untar the distribution and copy the content as follows:
     - Copy *${artifactId}.jar* to */opt/omni/unifIntegController/plugins/*
@@ -157,6 +157,7 @@ Here is an example request URL and associated payload/body to the app server RES
 	
 	{
 	    "specificationName": "${pluginNameLowerCase}-backup-spec-1",
+	    "appSubType": "${pluginName}",
 	    "mode": "full",
 	    "load": "high",
 	    "monitor": "show"
