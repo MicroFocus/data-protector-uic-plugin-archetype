@@ -16,6 +16,7 @@
 - JDK 17 
 - Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 or above with at least one UIC instance.
+- To install UIC instance refer the product documentaion.
 - Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
@@ -43,27 +44,21 @@
 
 Run `mvn clean package`
 
-<h2>Manual Installation</h2>
+<h2>Registration and Push Installation</h2>
 
-- Copy the built distribution (*${pluginName.toLowerCase()}-${version}-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
-- Make sure that the *dpuic* service is stopped.
-- Untar the distribution and copy the content as follows:
-    - Copy *${artifactId}.jar* to */opt/omni/unifIntegController/plugins/*
-    - Copy the content of *config* directory to */etc/opt/omni/client/modules/unifIntegController/config/*
-    - Copy whatever else is needed by the plugin
-- Edit */etc/opt/omni/client/modules/unifIntegController/config/dpuic.properties* and specify ```${package},${package}.*``` to the `controller.plugin.packages` property. Uncomment the property if it is commented out. The result should look as follows:
+- Refer the product documentation.
 
 ```
 controller.plugin.packages=${package},${package}.*
 ```
-- Start *dpuic* service. Verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
+- After *push installation* verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
 
 ```
 <timestamp> [main] [INFO ] com.mf.dp.uic.plugin.PluginManager - Plugins loaded:
 	Plugin(provider=${package}.${pluginName}BackupProvider, name=${pluginName}, title=${pluginName} Plugin, vendor=${groupId}, version=${version}, UICVersion=23.3, UICSPIVersion=1.0.0)
 ```
 
-> If MongoDB plugin was installed during UIC installation, it is not strictly required to remove it before testing the custom plugin. Multiple plugins can load and run simultaneously within the same UIC instance **as long as** their respective dependencies do not cause conflict with each other, although such deployment is not ideal or even realistic. In production system, it is **strongly** discouraged to load more than one plugin into a UIC instance.
+> If MongoDB plugin was installed during UIC installation, it is not strictly required to remove it before testing the custom plugin. Deploying multiple plugins simultaneously within the same UIC instance is not ideal or even realistic. In production system, it is **strongly** discouraged to load more than one plugin into a UIC instance.
 
 <h2>(Optional) Plugin Specific REST API</h2>
 
