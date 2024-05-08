@@ -77,7 +77,7 @@ Here's an example payload.
 	    "appHost": "sles15.newton.novell.com",
 	    "application": {
 	      "type": "unifiedAgent",
-	      "subType": "${pluginName}"
+	      "subType": "${pluginNameLowerCase}"
 	    },
 	    "appName": "myAppName",
 	    "appOptions": {
@@ -131,7 +131,7 @@ Here's an example payload.
 
 A few key points to pay attention to:
 
-- The `client.application.subType` must be *${pluginName}* (with exact case!). This value is case sensitive and must exactly match the plugin name.
+- The `client.application.subType` must be *${pluginNameLowerCase}* (with small case!). This value should be in small case and must exactly match the plugin name.
 - The `client.appOptions.appId` should be an ID value that uniquely identifies the application or the data source. An ID is unique for each data source. ID should not contain space.
 - The `client.appOptions.appName` should be a name given to the application or the data source. A name is not necessarily unique for each data source. Name should not contain space.
 - The `client.appName` must be the same as `client.appOptions.appName`.
@@ -152,7 +152,7 @@ Here is an example request URL and associated payload/body to the app server RES
 	
 	{
 	    "specificationName": "${pluginNameLowerCase}-backup-spec-1",
-	    "appSubType": "${pluginName}",
+	    "appSubType": "${pluginNameLowerCase}",
 	    "mode": "full",
 	    "load": "high",
 	    "monitor": "show"
@@ -168,7 +168,7 @@ Here is an example request URL and associated payload/body to the app server to 
 
 	{
 	  "barhost": "sles15.newton.novell.com",
-	  "appType": "${pluginName}",
+	  "appType": "${pluginNameLowerCase}",
 	  "appOptions": {
 	    "sessionId": "2023/01/24-2",
 	    "host": "sles15.newton.novell.com",
@@ -187,7 +187,7 @@ Here is an example request URL and associated payload/body to the app server to 
 
 A few key points to pay attention to:
 
-- The `appType` must be *${pluginName}* (with exact case!)
+- The `appType` must be *${pluginNameLowerCase}* (with small case!)
 - Within the `appOptions`, the `appName` and `appId` must match the values given to the corresponding backup specification respectively.
 - The `appOptions/app-specific-key-for-restore-n` are the extensible part of the JSON and their semantics are known only to the plugin.
 - The content of `appOptions` must be defined in *restore_appOptions.schema.json* explained earlier.

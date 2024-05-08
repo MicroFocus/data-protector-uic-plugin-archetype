@@ -54,7 +54,7 @@ Here's an example payload.
 	    "appHost": "sles15.newton.novell.com",
 	    "application": {
 	      "type": "unifiedAgent",
-	      "subType": "SampleFS"
+	      "subType": "samplefs"
 	    },
 	    "appName": "home_test",
 	    "appOptions": {
@@ -106,7 +106,7 @@ Here's an example payload.
 
 A few key points to pay attention to:
 
-- The `client.application.subType` must be *SampleFS* (with exact case!). This value is case sensitive and must exactly match the plugin name.
+- The `client.application.subType` must be *samplefs* (with small case!). This value should be in small case and must exactly match the plugin name.
 - The `client.appOptions.appId` should be an ID value that uniquely identifies the application or the data source. An ID is unique for each data source. ID should not contain space.
 <br>In the case of *SampleFS*, the data source is the file systems on the machine on which the plugin is installed. Therefore, the client's hostname is most appropriate as the ID.
 - The `client.appOptions.appName` should be a name given to the application or the data source. A name is not necessarily unique for each data source. Name should not contain space.
@@ -128,7 +128,7 @@ Here is an example request URL and associated payload/body to the app server RES
 	
 	{
 	    "specificationName": "samplefs-backup-spec-1",
-	    "appSubType": "SampleFS",
+	    "appSubType": "samplefs",
 	    "mode": "full",
 	    "load": "high",
 	    "monitor": "show"
@@ -146,7 +146,7 @@ Here is an example request URL and associated payload/body to the app server RES
 
 	{
 	  "barhost": "sles15.newton.novell.com",
-	  "appType": "SampleFS",
+	  "appType": "samplefs",
 	  "appOptions": {
 	    "sessionId": "2023/01/24-2",
 	    "host": "sles15.newton.novell.com",
@@ -162,7 +162,7 @@ Here is an example request URL and associated payload/body to the app server RES
 
 A few key points to pay attention to:
 
-- The `appType` must be *SampleFS* (with exact case!)
+- The `appType` must be *samplefs* (with small case!)
 - Within the `appOptions`, the `appName` and `appId` must match the values given to the corresponding backup specification respectively.
 - The `restoreDirPath` field must be given a value that denotes an existing and empty directory. The (required) full backup data is restored directly to the specified directory. The (optional) incremental backups, if any in the chain, are first restored to the temporary area (under */var/opt/omni/tmp/samplefs/restore/&lt;timestamp&gt;*) and then applied to the *restoreDirPath* directory one by one in ascending time order within the chain. 
 
