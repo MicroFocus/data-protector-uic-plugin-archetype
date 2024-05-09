@@ -42,8 +42,8 @@
 
 <h2>Build</h2>
 
-Run `mvn clean package`.
-After building project *${pluginName.toLowerCase()}-${version}-dist.tar.gz* will be created inside the target folder.
+- Run `mvn clean package`.
+- After building project *${pluginName.toLowerCase()}-${version}-dist.tar.gz* will be created inside the target folder.
 
 <h2> Installation </h2>
 
