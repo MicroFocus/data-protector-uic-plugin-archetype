@@ -17,7 +17,7 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 &nbsp;&nbsp;&nbsp;&nbsp;**IMPORTANT**:
 * For the property *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
 * For the property *package*, the value should start with the string 'com.mf.dp.sample'.
-* For the property *version*, the value can contain the numbers and ('.'). Example: "3.4","7.1.0".
+* For the property *version*, the value can contain the numbers and ('.'). Example: "1.0","1.0.0".
 * For the property *pluginName*, the value is case insensitive.
 * The values for any property should not contain space(' ') or comma(',').
 
