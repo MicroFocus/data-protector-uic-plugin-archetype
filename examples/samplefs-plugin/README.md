@@ -35,7 +35,7 @@ There are two ways to install the plugins. Customer needs to follow one of these
 
 ## Manual Installation
 
-Here, installing of plugin will be done without registration. In manual installtion also plugins will be loaded. But, we can't view the installed plugins in the UI.
+Here, installing of plugin will be done without registration. In manual installation also plugins will be loaded. But, we can't view the installed plugins in the UI.
 - Copy the built distribution (*samplefs-1.0.0-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
 - Make sure that the *dpuic* service is stopped.
 - Untar the distribution and copy the content as follows:
