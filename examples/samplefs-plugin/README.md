@@ -39,13 +39,14 @@ Here, installing of plugin will be done without registration. In manual installt
 - Copy the built distribution (*samplefs-1.0.0-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
 - Make sure that the *dpuic* service is stopped.
 - Untar the distribution and copy the content as follows:
-  - Copy *samplefs-plugin.jar* to */opt/omni/unifIntegController/plugins/*
+  - Copy *samplefs.jar* to */opt/omni/unifIntegController/plugins/*
   - Copy the content of *config* directory to */etc/opt/omni/client/modules/unifIntegController/config/*
   - Copy bin directory (yes, the entire directory) to /opt/omni/unifIntegController/ (After copy, you should have /opt/omni/unifIntegController/bin/copy_files.sh). Check the file permissions on the copied files to ensure that the scripts are executable.
 - Edit */etc/opt/omni/client/modules/unifIntegController/config/dpuic.properties* and specify `com.mf.dp.sample.*` to the `controller.plugin.packages` property. Uncomment the property if it is commented out. The result should look as follows:
 ```
 controller.plugin.packages=com.mf.dp.sample.*
 ```
+start the *dpuic* service.
 
 
 Once the *Installation* step is done. Do verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
