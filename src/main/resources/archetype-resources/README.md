@@ -44,7 +44,7 @@
 
 Run `mvn clean package`
 
-<h2> Installation <h2>
+<h2> Installation </h2>
 
 There are two ways to install the plugins. Customer needs to follow one of these two.
 - Push Installation
