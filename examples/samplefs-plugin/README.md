@@ -119,8 +119,7 @@ A few key points to pay attention to:
 
 There are several ways to trigger a backup request
 - Use the REST API (served by app server) to make a backup request programmatically
-- Use the Web UI to initiate a backup request interactively
-- Use the Web UI to set up scheduled backup
+- Use the CLI omnib command to initiate a backup request interactively
 
 Here is an example request URL and associated payload/body to the app server REST API to programmatically trigger a backup request. Note that the *specificationName* value should match the name of the backup specification from the earlier example.
 
