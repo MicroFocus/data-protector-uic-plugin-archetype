@@ -67,6 +67,7 @@ Here, installing of plugin will be done without registration. In manual installt
 ```
 controller.plugin.packages=com.mf.dp.sample.*
 ```
+- start *dpuic* service.
 
 
 Once the *Installation* step is done. Do verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
