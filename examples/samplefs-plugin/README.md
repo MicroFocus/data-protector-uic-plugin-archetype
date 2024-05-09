@@ -22,6 +22,7 @@
 ## Build
 
 Run `mvn clean package`
+After building project ${*samplefs-1.0.0*}-dist.tar.gz will be created inside the target folder.
 
 ## Installation
 
