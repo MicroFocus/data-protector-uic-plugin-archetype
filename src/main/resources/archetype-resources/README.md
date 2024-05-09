@@ -55,7 +55,7 @@ controller.plugin.packages=${package},${package}.*
 
 ```
 <timestamp> [main] [INFO ] com.mf.dp.uic.plugin.PluginManager - Plugins loaded:
-	Plugin(provider=${package}.${pluginName}BackupProvider, name=${pluginName}, title=${pluginName} Plugin, vendor=${groupId}, version=${version}, UICVersion=23.3, UICSPIVersion=1.0.0)
+	Plugin(provider=${package}.${pluginName}BackupProvider, name=${pluginNameLowerCase}, title=${pluginName} Plugin, vendor=${groupId}, version=${version}, UICVersion=23.3, UICSPIVersion=1.0.0)
 ```
 
 > If MongoDB plugin was installed during UIC installation, it is not strictly required to remove it before testing the custom plugin. Deploying multiple plugins simultaneously within the same UIC instance is not ideal or even realistic. In production system, it is **strongly** discouraged to load more than one plugin into a UIC instance.
