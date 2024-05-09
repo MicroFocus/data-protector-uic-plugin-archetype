@@ -16,6 +16,7 @@
 - JDK 17 
 - Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 or above with at least one UIC instance.
+- To install UIC instance on your client machine refer the product documentaion.
 - Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
@@ -43,27 +44,40 @@
 
 Run `mvn clean package`
 
+<h2> Installation <h2>
+
+There are two ways to install the plugins. Customer needs to follow one of these two.
+- Push Installation
+- Manual Installation
+
+<h2>Registration and Push Installation</h2>
+
+- Refer the product documentation.
+
 <h2>Manual Installation</h2>
 
+Here, installing of plugin will be done without registration. In manual installtion also plugins will be loaded. But, we can't view the installed plugins in the UI.
 - Copy the built distribution (*${pluginName.toLowerCase()}-${version}-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
 - Make sure that the *dpuic* service is stopped.
 - Untar the distribution and copy the content as follows:
     - Copy *${artifactId}.jar* to */opt/omni/unifIntegController/plugins/*
     - Copy the content of *config* directory to */etc/opt/omni/client/modules/unifIntegController/config/*
     - Copy whatever else is needed by the plugin
-- Edit */etc/opt/omni/client/modules/unifIntegController/config/dpuic.properties* and specify ```${package},${package}.*``` to the `controller.plugin.packages` property. Uncomment the property if it is commented out. The result should look as follows:
+- Edit */etc/opt/omni/client/modules/unifIntegController/config/dpuic.properties* and specify ```${package}.*``` to the `controller.plugin.packages` property. Uncomment the property if it is commented out. The result should look as follows:
+```
+controller.plugin.packages=com.mf.dp.sample.*
+```
+- start *dpuic* service.
 
-```
-controller.plugin.packages=${package},${package}.*
-```
-- Start *dpuic* service. Verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
+
+Once the *Installation* step is done. Do verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
 
 ```
 <timestamp> [main] [INFO ] com.mf.dp.uic.plugin.PluginManager - Plugins loaded:
-	Plugin(provider=${package}.${pluginName}BackupProvider, name=${pluginName}, title=${pluginName} Plugin, vendor=${groupId}, version=${version}, UICVersion=23.3, UICSPIVersion=1.0.0)
+	Plugin(provider=${package}.${pluginName}BackupProvider, name=${pluginNameLowerCase}, title=${pluginName} Plugin, vendor=${groupId}, version=${version}, UICVersion=23.3, UICSPIVersion=1.0.0)
 ```
 
-> If MongoDB plugin was installed during UIC installation, it is not strictly required to remove it before testing the custom plugin. Multiple plugins can load and run simultaneously within the same UIC instance **as long as** their respective dependencies do not cause conflict with each other, although such deployment is not ideal or even realistic. In production system, it is **strongly** discouraged to load more than one plugin into a UIC instance.
+> If MongoDB plugin was installed during UIC installation, it is not strictly required to remove it before testing the custom plugin. Deploying multiple plugins simultaneously within the same UIC instance is not ideal or even realistic. In production system, it is **strongly** discouraged to load more than one plugin into a UIC instance.
 
 <h2>(Optional) Plugin Specific REST API</h2>
 
@@ -82,7 +96,7 @@ Here's an example payload.
 	    "appHost": "sles15.newton.novell.com",
 	    "application": {
 	      "type": "unifiedAgent",
-	      "subType": "${pluginName}"
+	      "subType": "${pluginNameLowerCase}"
 	    },
 	    "appName": "myAppName",
 	    "appOptions": {
@@ -136,7 +150,7 @@ Here's an example payload.
 
 A few key points to pay attention to:
 
-- The `client.application.subType` must be *${pluginName}* (with exact case!). This value is case sensitive and must exactly match the plugin name.
+- The `client.application.subType` must be *${pluginNameLowerCase}* (with small case!). This value should be in small case and must exactly match the plugin name.
 - The `client.appOptions.appId` should be an ID value that uniquely identifies the application or the data source. An ID is unique for each data source. ID should not contain space.
 - The `client.appOptions.appName` should be a name given to the application or the data source. A name is not necessarily unique for each data source. Name should not contain space.
 - The `client.appName` must be the same as `client.appOptions.appName`.
@@ -148,8 +162,7 @@ A few key points to pay attention to:
 
 There are several ways to trigger a backup request
 - Use the REST API (served by app server) to make a backup request programmatically
-- Use the Web UI to initiate a backup request interactively
-- Use the Web UI to set up scheduled backup
+- Use the CLI omnib command to initiate a backup request interactively
 
 Here is an example request URL and associated payload/body to the app server REST API to programmatically trigger a backup request. Note that the *specificationName* value should match the name of the backup specification from the earlier example.
 
@@ -157,7 +170,7 @@ Here is an example request URL and associated payload/body to the app server RES
 	
 	{
 	    "specificationName": "${pluginNameLowerCase}-backup-spec-1",
-	    "appSubType": "${pluginName}",
+	    "appSubType": "${pluginNameLowerCase}",
 	    "mode": "full",
 	    "load": "high",
 	    "monitor": "show"
@@ -173,7 +186,7 @@ Here is an example request URL and associated payload/body to the app server to 
 
 	{
 	  "barhost": "sles15.newton.novell.com",
-	  "appType": "${pluginName}",
+	  "appType": "${pluginNameLowerCase}",
 	  "appOptions": {
 	    "sessionId": "2023/01/24-2",
 	    "host": "sles15.newton.novell.com",
@@ -192,7 +205,7 @@ Here is an example request URL and associated payload/body to the app server to 
 
 A few key points to pay attention to:
 
-- The `appType` must be *${pluginName}* (with exact case!)
+- The `appType` must be *${pluginNameLowerCase}* (with small case!)
 - Within the `appOptions`, the `appName` and `appId` must match the values given to the corresponding backup specification respectively.
 - The `appOptions/app-specific-key-for-restore-n` are the extensible part of the JSON and their semantics are known only to the plugin.
 - The content of `appOptions` must be defined in *restore_appOptions.schema.json* explained earlier.

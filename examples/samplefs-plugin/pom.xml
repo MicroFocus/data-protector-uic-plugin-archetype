@@ -9,9 +9,9 @@
 		<version>23.3</version>
 		<relativePath>parent-pom.xml</relativePath>
 	</parent>
-	<artifactId>samplefs-plugin</artifactId>
+	<artifactId>samplefs</artifactId>
 	<version>1.0.0</version>
-	<name>samplefs-plugin</name>
+	<name>samplefs</name>
 	<description>Sample integration plugin for filesystem</description>
 	<properties>
 		<commons-email.version>1.5</commons-email.version>
@@ -54,7 +54,7 @@
 							<Implementation-Title>SampleFS Plugin</Implementation-Title>
 							<Implementation-Vendor>Micro Focus</Implementation-Vendor>
 							<Implementation-Version>${version}</Implementation-Version>
-							<UIC-Plugin-Name>SampleFS</UIC-Plugin-Name>
+							<UIC-Plugin-Name>samplefs</UIC-Plugin-Name>
 							<UIC-Version>${integration-controller.version}</UIC-Version>
 							<UIC-SPI-Version>${integration-controller.spi.version}</UIC-SPI-Version>
 							<Build-Time>${maven.build.timestamp}</Build-Time>
