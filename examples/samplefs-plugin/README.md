@@ -16,21 +16,39 @@
 - JDK 17 
 - Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 or above with at least one UIC instance.
-- To install the UIC instance on you client refer the product documentation
+- To install the UIC instance on your client machine refer the product documentation
 - Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 ## Build
 
 Run `mvn clean package`
 
+## Installation
+
+There are two ways to install the plugins. Customer needs to follow one of these two.
+- Push Installation
+- Manual Installation
+
 ## Registration and Push Installation
 
 - Refer the product documentation.
+
+## Manual Installation
+
+Here, installing of plugin will be done without registration. In manual installtion also plugins will be loaded. But, we can't view the installed plugins in the UI.
+- Copy the built distribution (*samplefs-1.0.0-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
+- Make sure that the *dpuic* service is stopped.
+- Untar the distribution and copy the content as follows:
+  - Copy *samplefs-plugin.jar* to */opt/omni/unifIntegController/plugins/*
+  - Copy the content of *config* directory to */etc/opt/omni/client/modules/unifIntegController/config/*
+  - Copy bin directory (yes, the entire directory) to /opt/omni/unifIntegController/ (After copy, you should have /opt/omni/unifIntegController/bin/copy_files.sh). Check the file permissions on the copied files to ensure that the scripts are executable.
+- Edit */etc/opt/omni/client/modules/unifIntegController/config/dpuic.properties* and specify `com.mf.dp.sample.*` to the `controller.plugin.packages` property. Uncomment the property if it is commented out. The result should look as follows:
 ```
 controller.plugin.packages=com.mf.dp.sample.*
 ```
-- After *push installation* verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following:
 
+
+Once the *Installation* step is done. Do verify that /var/opt/omni/log/unifIntegController/dpuic.log shows an entry like the following, which is an indication that the plugin was loaded properly:
 ```
 <timestamp> [main] [INFO ] com.mf.dp.uic.plugin.PluginManager - Plugins loaded:
 	Plugin(provider=com.mf.dp.sample.fs.SampleFSBackupProvider, name=SampleFS, title=SampleFS Plugin, vendor=Micro Focus, version=1.0.0, UICVersion=23.3, UICSPIVersion=1.0.0)
