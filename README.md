@@ -1,7 +1,7 @@
 # Maven Archetype for Opentext Data Protector UIC Plugin
 
 This project is a [Maven Archetype](https://maven.apache.org/archetype/) project that can be used to create the
-skeleton project structure and stub files for the development of *UIC plugin* for *Oentext Data Protector*. 
+skeleton project structure and stub files for the development of *UIC plugin* for *Opentext Data Protector*. 
 
 ## Installing the archetype
 * Clone or download the project.
