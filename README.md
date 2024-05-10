@@ -1,4 +1,4 @@
-# Maven Archetype for Micro Focus Data Protector UIC Plugin
+# Maven Archetype for Opentext Data Protector UIC Plugin
 
 This project is a [Maven Archetype](https://maven.apache.org/archetype/) project that can be used to create the
 skeleton project structure and stub files for the development of *UIC plugin* for *Micro Focus Data Protector*. 
@@ -15,11 +15,12 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 ![Screenshot](images/generate_project.png?raw=true)
 
 &nbsp;&nbsp;&nbsp;&nbsp;**IMPORTANT**:
-* For the property *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
-* For the property *package*, the value should start with the string 'com.mf.dp.sample'.
-* For the property *version*, the value can contain the numbers and ('.'). Example: "1.0","1.0.0".
-* For the property *pluginName*, the value is case insensitive.
-* The values for any property should not contain space(' ') or comma(',').
+While specifying the values for the properties, ensure the following:
+* Do not include space(' ') or comma(',').
+* For pluginName, the value is case insensitive.
+* For package, the value should start with the string 'com.mf.dp.sample'.
+* For version, the value can contain the numbers and ('.'). Example: "1.0","1.0.0".
+* For *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
 
 
 ## Using the generated project
