@@ -12,7 +12,6 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 * cd to a directory where you want to create a new plugin project
 * Run `mvn archetype:generate -DarchetypeGroupId=com.microfocus.dp -DarchetypeArtifactId=uic-plugin-archetype -DarchetypeVersion=1.0.0` and enter appropriate input values for the properties when prompted. Here's an example:
 
-![Screenshot](images/generate_project.png?raw=true)
 
 &nbsp;&nbsp;&nbsp;&nbsp;**IMPORTANT**:
 While specifying the values for the properties, ensure the following:
@@ -21,6 +20,8 @@ While specifying the values for the properties, ensure the following:
 * For package, the value should start with the string 'com.mf.dp.sample'.
 * For version, the value can contain the numbers and ('.'). Example: "1.0","1.0.0".
 * For *pluginNameLowerCase*, do not enter a value. You must accept the default value presented.
+
+![Screenshot](images/generate_project.png?raw=true)
 
 
 ## Using the generated project
