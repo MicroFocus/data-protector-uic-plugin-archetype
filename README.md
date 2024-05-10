@@ -8,7 +8,7 @@ skeleton project structure and stub files for the development of *UIC plugin* fo
 * Make sure that you have JDK 17 and recent version of Maven installed.
 * Run `mvn clean install` in the root of the project. This will build and install the archetype on the local machine.
 
-## Using the archetype
+## Using the archetype to create a plugin
 * cd to a directory where you want to create a new plugin project
 * Run `mvn archetype:generate -DarchetypeGroupId=com.microfocus.dp -DarchetypeArtifactId=uic-plugin-archetype -DarchetypeVersion=1.0.0` and enter appropriate input values for the properties when prompted. Here's an example:
 
