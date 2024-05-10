@@ -11,15 +11,15 @@
     - *src/main/resources/META-INF/schema/restore_appOptions.schema.json* - This file defines JSON schema for the `appOptions` part of the restore request.
     - *src/main/resources/META-INF/services/com.mf.dp.uic.plugin.spi.BackupProvider* - This file specifies the full name of the class implementing the service interface (SPI)
 
-<h2>Preparation</h2>
+<h2>Prerequisites</h2>
 
 - JDK 17 
 - Maven 3.6.3 or higher
-- Install and configure Data Protector 23.3 or above with at least one UIC instance.
-- To install UIC instance on your client machine, refer the Data Protector documentation.
-- Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
+- Install and configure Data Protector 24.2 or above with at least one UIC instance.
+  To install UIC instance on your client machine, refer the Data Protector documentation.
+- Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The *sdk* directory also contains javadoc (integration-controller-24.2-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
-<h2>Development</h2>
+<h2>Develop Plugin</h2>
 
 1. Start by searching all Java source files (*.java) for the occurrences of `TODO` in order to get an understanding of where to focus efforts. Also, see [SampleFS Plugin](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin) project for an example of developing a simple and functioning plugin based on the skeleton project generated from the archetype. The following lists the most essential places requiring modification:
 
