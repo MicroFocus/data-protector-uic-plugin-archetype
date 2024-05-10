@@ -16,7 +16,7 @@
 - JDK 17 
 - Maven 3.6.3 or higher
 - Install and configure Data Protector 23.3 or above with at least one UIC instance.
-- To install UIC instance on your client machine refer the product documentaion.
+- To install UIC instance on your client machine, refer the Data Protector documentation.
 - Copy the UIC jar (integration-controller.jar) in the */opt/omni/unifIntegController/sdk* directory from the client machine where UIC instance is installed, and place it in *src/in-project-repo/com/mf/dp/integration-controller/23.3* directory of this project. The version of the UIC jar (23.3) must match the value of *project.parent.version* element in pom.xml of this project. The *sdk* directory also contains javadoc (integration-controller-23.3-javadoc.jar) that documents the classes in the UIC jar. Copy it over to the development system for reference as well.
 
 <h2>Development</h2>
@@ -57,7 +57,7 @@ There are two ways to install the plugins. Customer needs to follow one of these
 
 <h2>Manual Installation</h2>
 
-Here, installing of plugin will be done without registration. In manual installtion also plugins will be loaded. But, we can't view the installed plugins in the UI.
+Here, installing of plugin will be done without registration. In manual installation also plugins will be loaded. But, we can't view the installed plugins in the UI.
 - Copy the built distribution (*${pluginName.toLowerCase()}-${version}-dist.tar.gz*) in the *target* directory to a DP client machine where the compatible version of the *Unified Agent* is already installed and fully functioning.
 - Make sure that the *dpuic* service is stopped.
 - Untar the distribution and copy the content as follows:
