@@ -25,7 +25,7 @@ While specifying the values for the properties, ensure the following:
 
 
 ## Using the generated project
-Refer to the README.md located in the root of the generated project for instructions on how to use the skeleton project to develop, build, deploy, and run a plugin.
+Refer to the [README.md](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/blob/main/src/main/resources/archetype-resources/README.md) of archetype-resources or the README.md located in the root of the generated project for instructions on how to use the skeleton project to develop, build, deploy, and run a plugin.
 
 ## Example plugin
 This project also contains an example plugin named [SampleFS](https://github.com/MicroFocus/data-protector-uic-plugin-archetype/tree/main/examples/samplefs-plugin). The *SampleFS* plugin is developed using the skeleton project created from the archetype and adds rudimentary backup and restore functionality for a directory on the file system.
